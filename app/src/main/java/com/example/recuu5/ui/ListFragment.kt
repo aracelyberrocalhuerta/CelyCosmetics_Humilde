@@ -47,9 +47,9 @@ class ListFragment : Fragment() {
 
         binding.etSearch.setOnKeyListener(View.OnKeyListener { _, keyCode, event ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
-                val name = binding.etSearch.text.toString()
+                val name = binding.etSearch.text.toString().lowercase()
                 val listFilter = products.filter { product ->
-                    product.name.contains(name)
+                    product.name.lowercase().contains(name)
                 }
                 adapter.submitList(listFilter)
                 return@OnKeyListener true
